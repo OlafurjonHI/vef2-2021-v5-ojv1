@@ -3,7 +3,7 @@ const Footer = () => (
     <hr />
     <span>
       Fréttir frá
-      <a href="https://www.ruv.is/frettir">RÚV</a>
+      <a href="https://www.ruv.is/frettir">{' RÚV'}</a>
     </span>
   </footer>
 );

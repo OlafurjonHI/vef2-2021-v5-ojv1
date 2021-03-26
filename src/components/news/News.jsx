@@ -7,7 +7,7 @@ import './News.scss';
 import NotFound from '../../pages/NotFound';
 
 dotenv.config();
-const apiUrl = process.env.REACT_APP_API_URL;
+let apiUrl = process.env.REACT_APP_API_URL;
 
 const News = (props) => {
   const [loading, setLoading] = useState(false);
@@ -16,7 +16,12 @@ const News = (props) => {
   const [max, setMax] = useState(null);
   const [redirect, setRedirect] = useState(false);
 
-  const id = props.id || props.match.params.id;
+  const { id } = props;
+  if (id) {
+    apiUrl = apiUrl.concat(id);
+  } else if (props.match.params.id) {
+    apiUrl = apiUrl.concat(props.match.params.id);
+  }
 
   useEffect(() => {
     async function fetchData() {
@@ -24,7 +29,7 @@ const News = (props) => {
       setError(null);
       let json;
       try {
-        const result = await fetch(`${apiUrl}${id}`);
+        const result = await fetch(`${apiUrl}`);
         if (!result.ok) {
           if (result.status === 404) {
             setRedirect(true);
