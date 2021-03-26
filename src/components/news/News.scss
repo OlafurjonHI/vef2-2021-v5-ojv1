@@ -1,0 +1,18 @@
+.news__data {
+    display: flex;
+    flex-direction: column;
+    background-color: #f7f1cf;
+    border: 1px solid black;
+    border-radius: .5em;
+    padding: .5em;
+    margin: .5em;
+ 
+}
+.news__title {
+    margin: .5em 0;
+}
+.news__navigationLink {
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+}
